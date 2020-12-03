@@ -47,7 +47,7 @@ definition(
  
 }
 private def get_APP_VERSION() {
-	return "2.6.6"
+	return "3.0"
 }    
 preferences {
 
@@ -80,7 +80,7 @@ def about() {
 			paragraph "If you like this smartapp, please support the developer via PayPal and click on the Paypal link below " 
 				href url:"https://www.paypal.me/ecomatiqhomes",
 					title:"Paypal donation..."
-			paragraph "CopyrightÂ©2018-2020 Yves Racine"
+			paragraph "Copyright©2018-2020 Yves Racine"
 				href url:"http://github.com/yracine/device-type-myNext", style:"embedded", required:false, title:"More information...", 
 					description: "http://github.com/yracine"
 		}
@@ -2024,7 +2024,7 @@ private void create_child_tstats() {
  			def name = tstat_info[1]
 			def labelName = 'MyTstat ' + "${name}"
 			traceEvent(settings.logFilter,"create_child_tstats>about to create child device with id $dni, thermostatId = $thermostatId, name=  ${name}", detailedNotif)
-			d = addChildDevice(getChildNamespace(), getTstatChildName(), dni, null,
+			d = addChildDevice(getTstatChildNamespace(), getTstatChildName(), dni, null,
 				[label: "${labelName}"]) 
 			def auth_data = [:]
 			auth_data?.access_token=atomicState?.access_token            
@@ -2071,7 +2071,7 @@ private void create_child_protects() {
  			def name = protect_info[1]
 			def labelName = 'MyAlarm ' + "${name}"
 			traceEvent(settings.logFilter,"create_child_protects>about to create child device with id $dni, protectId = $protectId, name=  ${name}", detailedNotif)
-			d = addChildDevice(getChildNamespace(), getProtectChildName(), dni, null,
+			d = addChildDevice(getProtectChildNamespace(), getProtectChildName(), dni, null,
 				[label: "${labelName}"]) 
 			def auth_data = [:]
 			auth_data?.access_token=atomicState?.access_token            
@@ -2259,8 +2259,8 @@ private def cleanupState() {
 	state.remove("${GLOBAL_BUCKETS_TYPES_CLAUSE}")
     
 //  remove old caches from previous versions
-	state.remove('["buckets","demand_response","device","device_alert_dialog","shared","topaz","kryptonite","quartz","link","structure","structure_metadata", "metadata", "occupancy","user","user_settings","rcs_settings","track","widget_track"]')
-	state.remove('["demand_response","device","device_alert_dialog","shared","topaz","kryptonite","quartz","link","structure","structure_metadata", "metadata", "occupancy","user","user_settings","rcs_settings","track","widget_track"]') 
+//	state.remove('["buckets","demand_response","device","device_alert_dialog","shared","topaz","kryptonite","quartz","link","structure","structure_metadata", "metadata", "occupancy","user","user_settings","rcs_settings","track","widget_track"]')
+//	state.remove('["demand_response","device","device_alert_dialog","shared","topaz","kryptonite","quartz","link","structure","structure_metadata", "metadata", "occupancy","user","user_settings","rcs_settings","track","widget_track"]') 
     
 	traceEvent(settings.logFilter,"cleanupState>clean up of some state variables done", detailedNotif, GLOBAL_LOG_TRACE)
     
@@ -2943,6 +2943,8 @@ private def get_MAX_GETTER_RETRIES() {
 }
 
 def getChildNamespace() { "yracine" }
+def getTstatChildNamespace() { "fabricacross64399" }
+def getProtectChildNamespace() { "fabricacross64399" }
 def getProtectChildName() { "My Next AlarmV2" }
 def getTstatChildName() { "My Next TstatV2" }
 def getCameraChildName() { "My Next CamV2" }
