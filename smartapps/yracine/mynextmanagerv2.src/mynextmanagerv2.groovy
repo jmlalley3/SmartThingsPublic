@@ -80,7 +80,7 @@ def about() {
 			paragraph "If you like this smartapp, please support the developer via PayPal and click on the Paypal link below " 
 				href url:"https://www.paypal.me/ecomatiqhomes",
 					title:"Paypal donation..."
-			paragraph "Copyright©2018-2020 Yves Racine"
+			paragraph "CopyrightÂ©2018-2020 Yves Racine"
 				href url:"http://github.com/yracine/device-type-myNext", style:"embedded", required:false, title:"More information...", 
 					description: "http://github.com/yracine"
 		}
